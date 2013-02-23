@@ -16,6 +16,8 @@ develop-eggs
 # Installer logs
 pip-log.txt
 
+
+*.~
 # Unit test / coverage reports
 .coverage
 .tox
@@ -25,3 +27,11 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*~
