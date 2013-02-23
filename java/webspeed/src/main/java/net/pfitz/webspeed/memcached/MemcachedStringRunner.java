@@ -19,7 +19,7 @@ public class MemcachedStringRunner extends Runner {
 	public MemcachedStringRunner() {
 		try 
 		{
-			String path = "/Users/patrick/Dropbox/mygit/SpeedDuel/data/records.json";
+			String path = "../data/records.json";
 			ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally					
 			this.client = new MemcachedClient(
 						new InetSocketAddress("127.0.0.1", 11211));
