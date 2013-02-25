@@ -2,6 +2,7 @@
 import simplejson as json
 import time
 
+
 f = open('emails.json', 'r')
 email_json = f.read()
 f.close()

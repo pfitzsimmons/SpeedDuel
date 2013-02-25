@@ -3,8 +3,23 @@ import time
 from optparse import OptionParser
 
 class_by_name = {
+    'memdb': 'memdb.Runner',
     'memcached': 'memcache_runner.Runner',
     'memcached-string': 'memcache_runner.StringRunner',
+    'templating-jinja': 'templating.JinjaRunner',
+    'templating-builder': 'templating.ListBuilderRunner',
+    'router': 'routing.Router',
+    'tsv': 'tsv_parser.TSVRunner',
+    'tsv2': 'tsv_parser.TSVRunner2',
+    'json': 'json_runner.JSONRunner',
+    'json-two-way': 'json_runner.JSONRunnerTwoWay',
+    'pyjson': 'json_runner.PyJSONRunner',
+    'log-parser': 'log_parser.LogParser',
+    'log-parser-nore': 'log_parser.LogParserNoRE',
+    # templating-clearsilver
+    # josephus - classes
+    # josephus - linkedlist
+    
 }
 
 def main():

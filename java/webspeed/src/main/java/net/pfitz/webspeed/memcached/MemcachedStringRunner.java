@@ -7,6 +7,7 @@ import java.util.List;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 
+import net.pfitz.webspeed.Constants;
 import net.pfitz.webspeed.Person;
 import net.pfitz.webspeed.Runner;
 import net.spy.memcached.MemcachedClient;
@@ -19,10 +20,11 @@ public class MemcachedStringRunner extends Runner {
 	public MemcachedStringRunner() {
 		try 
 		{
-			String path = "../data/records.json";
+			String path = Constants.DATA_PATH + "/records.json";
 			ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally					
 			this.client = new MemcachedClient(
 						new InetSocketAddress("127.0.0.1", 11211));
+			
 		} catch (Exception e) 
 		{
 			throw new RuntimeException(e);
@@ -36,5 +38,10 @@ public class MemcachedStringRunner extends Runner {
 		String retrieved = (String)this.client.get(key);		
 		assert retrieved.length() == this.content.length();
 	}
+	@Override
+	public void shutdown() {
+		this.client.shutdown();
+	}
+	
 }
 

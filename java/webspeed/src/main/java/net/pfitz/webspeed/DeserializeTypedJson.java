@@ -9,12 +9,12 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.JsonToken;
 
-public class DeserializeTypedJson extends Runner {
+public class DeserializeTypedJson extends BaseRunner {
 
 	@Override
 	protected void runIteration() throws Exception {
 		JsonFactory f = new JsonFactory();
-		String path = "/Users/patrick/Dropbox/mygit/SpeedDuel/data/persons.json";
+		String path = Constants.DATA_PATH + "/persons.json";
 		JsonParser jp = f.createJsonParser(new File(path));
 		List<Person> persons = new ArrayList<Person>();
 		Person person = new Person();

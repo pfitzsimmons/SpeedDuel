@@ -7,6 +7,7 @@ import java.util.List;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 
+import net.pfitz.webspeed.Constants;
 import net.pfitz.webspeed.Person;
 import net.pfitz.webspeed.Runner;
 import net.spy.memcached.MemcachedClient;
@@ -17,9 +18,9 @@ public class MemcachedRunner extends Runner {
 	
 	public MemcachedRunner() {
 		try 
-		{
-			String path = "/Users/patrick/Dropbox/mygit/SpeedDuel/data/records.json";
-			ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally		
+		{			
+			String path = Constants.DATA_PATH + "/records.json";
+			ObjectMapper mapper = new ObjectMapper(); 		
 			this.persons = mapper.readValue(new File(path), new TypeReference<List<Person>>(){});			
 			this.client = new MemcachedClient(
 						new InetSocketAddress("127.0.0.1", 11211));
@@ -35,6 +36,11 @@ public class MemcachedRunner extends Runner {
 		this.client.set(key, 1000, this.persons);
 		List<Person> retrievedPersons = (List<Person>)this.client.get(key);
 		assert retrievedPersons.size() == this.persons.size();
+	}
+	
+	@Override
+	public void shutdown() {
+		this.client.shutdown();
 	}
 }
 

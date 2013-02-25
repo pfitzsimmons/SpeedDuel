@@ -26,7 +26,7 @@ public class MainRun {
 			numTimes = 1000;
 			runner = new DeserializeTypedJson();
 		} else if (action.equals("memcached")) {
-			numTimes = 1000;
+			numTimes = 10000;
 			runner = new MemcachedRunner();
 		} else if (action.equals("memcachedstring")) {
 			numTimes = 10000;
@@ -44,7 +44,7 @@ public class MainRun {
 		}
 		long end = System.nanoTime();
 		System.out.println("Time per iteration = " + ((end - start) / (numTimes )/1000.0) + " microseconds.");
-		
+		runner.shutdown();
 		
 	}
 

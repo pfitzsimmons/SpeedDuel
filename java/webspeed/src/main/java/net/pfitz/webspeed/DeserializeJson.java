@@ -7,12 +7,12 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.*;
 import org.codehaus.jackson.type.TypeReference;
 
-public class DeserializeJson extends Runner {
+public class DeserializeJson extends BaseRunner {
 
 	@Override
 	protected void runIteration() {
 		
-		String path = "/Users/patrick/Dropbox/mygit/SpeedDuel/data/persons.json";
+		String path = Constants.DATA_PATH + "/persons.json";
 		ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
 		try {
 			List<Person> persons = mapper.readValue(new File(path), new TypeReference<List<Person>>(){});
