@@ -1,0 +1,17 @@
+
+
+<table>
+ ${foreach persons p}
+   <tr>
+     <td>${p.firstName} ${p.lastName}</td>
+     <td>
+       ${if p.married}married${else}single${end}
+     </td>
+     <td>
+       ${p.id}
+     </td>
+     <td>
+       ${p.age}
+     </td>
+ ${end}
+</table>

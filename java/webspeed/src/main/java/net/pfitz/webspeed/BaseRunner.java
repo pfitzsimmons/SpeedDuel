@@ -13,6 +13,10 @@ public class BaseRunner extends Runner {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void log(Object o) {		
+		System.out.println(o);
+	}
 
 
 }

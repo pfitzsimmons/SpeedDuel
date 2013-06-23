@@ -1,0 +1,16 @@
+apply plugin: 'groovy'
+apply plugin:'application'
+mainClassName = "net.pfitz.groovspeed.Main"
+
+run.systemProperties = System.properties
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.0.5'
+    compile 'com.google.guava:guava:14.0.1'
+    compile 'org.jyaml:jyaml:1.3'
+    testCompile 'junit:junit:4.11'
+}

@@ -11,7 +11,7 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.JsonToken;
 
-public class DeserializeTypedJson extends BaseRunner {
+public class DeserializeTwoWayTypedJson extends BaseRunner {
 
 	
 	
@@ -19,6 +19,8 @@ public class DeserializeTypedJson extends BaseRunner {
 	protected void runIteration() throws Exception {
 		List<Person> persons = this.loadJson();
 		assert persons.size() == 1000;
+		String personsJson = this.dumpJson(persons);
+		assert personsJson.length() == 251572;
 	}
 	
 	protected String dumpJson (List<Person> persons) throws Exception {

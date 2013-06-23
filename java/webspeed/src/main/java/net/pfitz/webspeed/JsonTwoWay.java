@@ -8,17 +8,21 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.*;
 import org.codehaus.jackson.type.TypeReference;
 
-public class DeserializeJson extends BaseRunner {
+public class JsonTwoWay extends BaseRunner {
 
 	@Override
 	public void runIteration() {
-		this.deserialize();		
+		List<Person> persons = this.deserialize();
+		assert persons.size() == 1000;
+		String personsJson = serialize(persons);		
+		assert personsJson.length() == 251572;
 	}
 	
 	public List<Person> deserialize() {
 		String path = Constants.DATA_PATH + "/persons.json";
 		ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
 		List<Person> persons = new ArrayList<Person>();
+		
 		try {
 			persons = mapper.readValue(new File(path), new TypeReference<List<Person>>(){});
 		

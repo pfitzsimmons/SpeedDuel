@@ -1,0 +1,22 @@
+
+
+<table>
+#foreach( $p in $persons )
+  <tr>
+    <td>$p.firstName $p.lastName</td>
+    <td>
+      # if ($p.married)
+      married
+      #end
+      #if (!$p.married)
+      single
+      #end
+    </td>
+    <td>
+      $p.id
+    </td>
+    <td>
+      $p.age
+    </td>
+  </tr>
+</table>

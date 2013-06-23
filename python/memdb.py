@@ -20,7 +20,7 @@ class Runner(object):
         for x in xrange(1, 10000):
             objects.append(PageVisit.random_visit(2001))
         random.shuffle(objects)
-        self.big_list = [random.randint(0, 3000) for x in xrange(0, 100000)]
+        #self.big_list = [random.randint(0, 3000) for x in xrange(0, 100000)]
         print "DB completed"
         return objects
 
@@ -35,14 +35,6 @@ class Runner(object):
         start = time.time()
         self._find_top_20_visited_accounts_overall()
         print time.time() - start
-        start = time.time()
-        self._find_top_20_visited_pages()
-        print time.time() - start
-
-        start = time.time()
-        sorted(self.big_list)
-        print time.time() - start
-
 
     def _find_top_20_pages_for_account(self, account_id):
         pages = [page for page in self.objects if page.account_id == account_id]
@@ -66,6 +58,13 @@ class Runner(object):
         #pages = [self.objects[pos] for (visits, pos) in visits_positions[0:20]]
         #return pages
         return sorted(self.objects, key=operator.attrgetter('visits'))[:20]
+
+class SortingRunner(Runner):
+    def do_once(self):
+        start = time.time()
+        self._find_top_20_visited_pages()
+        print time.time() - start
+        
 
 PageVisitTuple = namedtuple('PageVisitTuple', ['url', 'visits', 'account_id', 'source'])
 
